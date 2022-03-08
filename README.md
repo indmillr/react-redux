@@ -1,2 +1,2 @@
 # react-redux
-Modern React with Redux
+A workalong with Steven Grider's Modern React with Redux course.
