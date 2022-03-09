@@ -1,3 +1,3 @@
 # Components
 
-Practice naive-build components and generating components using JSX.
+Create components and generating components using JSX.
