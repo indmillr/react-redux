@@ -14,8 +14,7 @@ class App extends React.Component {
     );
   }
 
-  render() {
-    // Conditional rendering to handle Errors
+  renderContent() {
     if (this.state.errorMessage && !this.state.lat) {
       return <div>Error: {this.state.errorMessage}</div>;
     }
@@ -23,6 +22,12 @@ class App extends React.Component {
       return <SeasonDisplay lat={this.state.lat} />;
     }
     return <Spinner message='Please accept location request' />;
+  }
+
+  render() {
+    // try to avoid multiple return statements within render()
+    // that's why renderContent exists
+    return <div className='border red'>{this.renderContent()};</div>;
   }
 }
 
