@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 // import SeasonDisplay from "./SeasonDisplay";
 
 class App extends React.Component {
+  // Good place to do one-time setup
   constructor(props) {
     // A reference to the parent constructor function
     super(props);
@@ -23,6 +24,7 @@ class App extends React.Component {
   }
 
   // React REQUIRES a render method!!!
+  // Avoid anything besides returning JSX
   render() {
     // Conditional rendering to handle Errors
     if (this.state.errorMessage && !this.state.lat) {
@@ -33,6 +35,24 @@ class App extends React.Component {
     }
     return <div>Loading!</div>;
   }
+  // Content visible on the screen
 
+  // Good place to do data-loading
+  componentDidMount() {
+    console.log("Component loaded!");
+  }
+  // Sit and Wait for updates
 
-ReactDOM.render(<App />, document.querySelector("#root"));
+  // Good place to do more data-loading when state/props change
+  componentDidUpdate() {
+    console.log("Component rerendered");
+  }
+  // Sit and wait until this component is no longer shown
+  
+  // Good place to do cleanup (especially for non-React stuff)
+  componentWillUnmount() {
+  }
+
+}
+
+ReactDOM.render(<App />, document.querySelector(#root));
