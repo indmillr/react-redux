@@ -13,8 +13,8 @@ class SearchBar extends React.Component {
   onFormSubmit = (event) => {
     // stop refresh from happening after each char
     event.preventDefault();
-
-    // TODO: Make sure to call callback from Parent Component
+    // tell the Parent Component what is the search term
+    this.props.onFormSubmit(this.state.term);
   };
 
   render() {
