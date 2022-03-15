@@ -4,8 +4,9 @@ import youtube from "../apis/youtube";
 
 class App extends React.Component {
   // What to do when the form is submitted?
-  onTermSubmit = (term) => {
-    youtube.get("/search", {
+  // Send the API request (async)
+  onTermSubmit = async (term) => {
+    const response = await youtube.get("/search", {
       params: {
         q: term,
       },
