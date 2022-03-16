@@ -5,9 +5,12 @@ const Search = () => {
   const [term, setTerm] = useState("");
 
   useEffect(() => {
-    // the 2nd arg in useEffect determines WHEN it rerenders
-    // one of these: (nothing), empty arr, arr with contents
-  });
+    const search = async () => {
+      await axios.get("asdfasdf");
+    };
+
+    search();
+  }, [term]);
 
   return (
     <div>
