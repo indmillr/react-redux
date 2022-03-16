@@ -1,7 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const Search = () => {
   const [term, setTerm] = useState("");
+
+  useEffect(() => {
+    console.log("asdfasdf");
+    // the 2nd arg in useEffect determines WHEN it rerenders
+    // one of these: (nothing), empty arr, arr with contents
+  }, []);
 
   return (
     <div>
