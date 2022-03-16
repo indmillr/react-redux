@@ -21,9 +21,19 @@ const Search = () => {
       setResults(data.query.search);
     };
 
-    // only Search when input is NOT empty
-    if (term) {
+    if (term && !results.length) {
       search();
+    } else {
+      const timeoutId = setTimeout(() => {
+        if (term) {
+          search();
+        }
+      }, 500);
+
+      // cleanup function to cancel previous timer
+      return () => {
+        clearTimeout(timeoutId);
+      };
     }
   }, [term]);
 
