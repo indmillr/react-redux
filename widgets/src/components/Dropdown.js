@@ -1,12 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const Dropdown = ({ options, selected, onSelectedChange }) => {
   const [open, setOpen] = useState(false);
+  const ref = useRef();
 
   useEffect(() => {
     document.body.addEventListener(
       "click",
-      () => {
+      // reference to the specific DOM element that is Clicked
+      (event) => {
+        // if Click was inside the component, just return
+        if (ref.current.contains(event.target)) {
+          return;
+        }
+        // otherwise, close Dropdown
         setOpen(false);
       },
       { capture: true },
@@ -30,7 +37,7 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
   });
 
   return (
-    <div className='ui form'>
+    <div ref={ref} className='ui form'>
       <div className='field'>
         <label className='label'>Select a Color</label>
         <div
