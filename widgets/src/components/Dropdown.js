@@ -5,19 +5,19 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
   const ref = useRef();
 
   useEffect(() => {
-    document.body.addEventListener(
-      "click",
-      // reference to the specific DOM element that is Clicked
-      (event) => {
-        // if Click was inside the component, just return
-        if (ref.current.contains(event.target)) {
-          return;
-        }
-        // otherwise, close Dropdown
-        setOpen(false);
-      },
-      { capture: true },
-    );
+    const onBodyClick = (event) => {
+      if (ref.current.contains(event.target)) {
+        return;
+      }
+      setOpen(false);
+    };
+    document.body.addEventListener("click", onBodyClick, { capture: true });
+
+    return () => {
+      document.body.removeEventListener("click", onBodyClick, {
+        capture: true,
+      });
+    };
   }, []);
 
   const renderedOptions = options.map((option) => {
